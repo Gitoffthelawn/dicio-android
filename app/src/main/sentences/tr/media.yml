@@ -6,7 +6,7 @@ pause:
   - (şarkı<yı|ya?>|medya<yı|ya?>|parça<yı|ya?>|müzi<k|ği|ğe?>|ses<i|e?>|video<yu|ya?>|dizi<yi|ye?>|yayın<ı|a?>|film<i|e?>) durdur|beklet|kapat|(beklemeye|bekletmeye|beklet (koy|bırak)?)
 
 previous:
-  - (bir? önceki)|son|(bir? gerideki) (şarkı<yı|ya?>|medya<yı|ya?>|parça<yı|ya?>|müzik<yı|ya?>|ses<yı|ya?>|video<yı|ya?>|dizi<yı|ya?>|yayın<yı|ya?>|film<yı|ya?>)<yı|ya>? yeniden oynat|oynat|(geri|değiş|dön|geri sar|(geri<ye?> git))?
+  - (bir? önceki)|son|(bir? gerideki) (şarkı<yı|ya?>|medya<yı|ya?>|parça<yı|ya?>|müzi<k|ği|ğe?>|ses<i|e?>|video<yu|ya?>|dizi<yi|ye?>|yayın<ı|a?>|film<i|e?>) yeniden oynat|oynat|(geri|değiş|dön|geri sar|(geri<ye?> git))?
   - geri sar
 
 next:
