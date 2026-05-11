@@ -31,12 +31,9 @@ object TelephoneInfo : SkillInfo("telephone") {
     override val neededPermissions: List<Permission>
             = listOf(PERMISSION_READ_CONTACTS, PERMISSION_CALL_PHONE)
 
-    override fun isAvailable(ctx: SkillContext): Boolean {
-        return Sentences.Telephone[ctx.sentencesLanguage] != null &&
-                Sentences.UtilYesNo[ctx.sentencesLanguage] != null
-    }
-
-    override fun build(ctx: SkillContext): Skill<*> {
+    override fun build(ctx: SkillContext): Skill<*>? {
+        if (Sentences.Telephone[ctx.sentencesLanguage] == null ||
+            Sentences.UtilYesNo[ctx.sentencesLanguage] == null) return null
         return TelephoneSkill(TelephoneInfo, Sentences.Telephone[ctx.sentencesLanguage]!!)
     }
 }

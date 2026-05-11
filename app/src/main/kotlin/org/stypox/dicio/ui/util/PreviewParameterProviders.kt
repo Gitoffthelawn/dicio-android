@@ -47,8 +47,7 @@ class SkillInfoPreviews : CollectionPreviewParameterProvider<SkillInfo>(listOf(
         override fun name(context: Context) = "Long name lorem ipsum dolor sit amet, consectetur"
         override fun sentenceExample(context: Context) = "Long sentence ".repeat(20)
         @Composable override fun icon() = rememberVectorPainter(Icons.Default.Extension)
-        override fun isAvailable(ctx: SkillContext) = true
-        override fun build(ctx: SkillContext) = error("not-implemented preview-only")
+        override fun build(ctx: SkillContext): Nothing = error("not-implemented preview-only")
     },
 ))
 

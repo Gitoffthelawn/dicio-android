@@ -73,7 +73,7 @@ class SkillHandler @Inject constructor(
 
     private val _skillRanker = MutableStateFlow(
         // an initial dummy value, will be overwritten directly by the launched job
-        SkillRanker(listOf(), buildSkillFromInfo(fallbackSkillInfoList[0]))
+        SkillRanker(listOf(), buildSkillFromInfo(fallbackSkillInfoList[0])!!)
     )
     val skillRanker: StateFlow<SkillRanker> = _skillRanker
 
@@ -87,18 +87,18 @@ class SkillHandler @Inject constructor(
 
                     val newEnabledSkillsInfo = allSkillInfoList
                         .filter { enabledSkills.getOrDefault(it.id, true) }
-                        .filter { it.isAvailable(skillContext) }
+                        .filter { it.build(skillContext) != null }
 
                     _enabledSkillsInfo.value = newEnabledSkillsInfo
                     _skillRanker.value = SkillRanker(
-                        newEnabledSkillsInfo.map(::buildSkillFromInfo),
-                        buildSkillFromInfo(fallbackSkillInfoList[0]),
+                        newEnabledSkillsInfo.mapNotNull(::buildSkillFromInfo),
+                        buildSkillFromInfo(fallbackSkillInfoList[0])!!,
                     )
                 }
         }
     }
 
-    private fun buildSkillFromInfo(skillInfo: SkillInfo): Skill<*> {
+    private fun buildSkillFromInfo(skillInfo: SkillInfo): Skill<*>? {
         return skillInfo.build(skillContext)
     }
 

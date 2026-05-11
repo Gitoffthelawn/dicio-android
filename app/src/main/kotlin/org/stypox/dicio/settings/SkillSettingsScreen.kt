@@ -115,7 +115,7 @@ fun SkillSettingsScreen(
         items(skills) { skill ->
             SkillSettingsItem(
                 skill = skill,
-                isAvailable = skill.isAvailable(viewModel.skillContext),
+                isAvailable = skill.build(viewModel.skillContext) != null,
                 enabled = enabledSkills.getOrDefault(skill.id, true),
                 setEnabled = { enabled -> viewModel.setSkillEnabled(skill.id, enabled) }
             )
