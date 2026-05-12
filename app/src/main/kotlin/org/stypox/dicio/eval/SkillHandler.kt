@@ -87,7 +87,7 @@ class SkillHandler @Inject constructor(
 
                     val newEnabledSkillsInfo = allSkillInfoList
                         .filter { enabledSkills.getOrDefault(it.id, true) }
-                        .filter { it.build(skillContext) != null }
+                        .mapNotNull { info -> info.build(skillContext)?.let { skill -> Pair(info, skill) } }
 
                     _enabledSkillsInfo.value = newEnabledSkillsInfo
                     _skillRanker.value = SkillRanker(
