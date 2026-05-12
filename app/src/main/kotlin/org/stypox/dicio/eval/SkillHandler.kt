@@ -89,7 +89,7 @@ class SkillHandler @Inject constructor(
                         .filter { enabledSkills.getOrDefault(it.id, true) }
                         .mapNotNull { info -> info.build(skillContext)?.let { skill -> Pair(info, skill) } }
 
-                    _enabledSkillsInfo.value = newEnabledSkillsInfo
+                    _enabledSkillsInfo.value = newEnabledSkillsInfo.map { (info, _skill) -> info }
                     _skillRanker.value = SkillRanker(
                         newEnabledSkillsInfo.mapNotNull(::buildSkillFromInfo),
                         buildSkillFromInfo(fallbackSkillInfoList[0])!!,
