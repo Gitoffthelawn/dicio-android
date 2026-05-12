@@ -91,7 +91,7 @@ class SkillHandler @Inject constructor(
 
                     _enabledSkillsInfo.value = newEnabledSkillsInfo.map { (info, _skill) -> info }
                     _skillRanker.value = SkillRanker(
-                        newEnabledSkillsInfo.mapNotNull(::buildSkillFromInfo),
+                        newEnabledSkillsInfo.map { (_info, skill) -> skill },
                         buildSkillFromInfo(fallbackSkillInfoList[0])!!,
                     )
                 }
